@@ -44,7 +44,7 @@ def do_work(link, crawler_id):
     m.digest()
 
     #Extract the links and add them to the queue. Using links_added
-    #counter to keep track of links fetched. Possible race condition.
+    #counter to limit the number of links to fetch.
     for link in re.findall('<a href="(http.*?)"', response_content):
         if links_added < num_to_crawl:
             links_added += 1
